@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login OMET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        <h2>Login OMET</h2>
+        <p class="subtitle">Silakan masuk ke sistem OSIS</p>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="loginUser" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="loginPass" required>
+                <i class="fas fa-eye eye-icon" onclick="togglePass('loginPass', this)"></i>
+            </div>
+            <button type="submit" class="btn-utama">Masuk</button>
+        </form>
+
+        <p class="auth-footer">
+            Belum punya akun? <a href="daftar.html">Buat Akun</a>
+        </p>
+    </div>
+
+    <script>
+        // Fungsi untuk melihat password
+        function togglePass(id, el) {
+            const x = document.getElementById(id);
+            if (x.type === "password") {
+                x.type = "text";
+                el.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                x.type = "password";
+                el.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        // Logika Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userIn = document.getElementById('loginUser').value;
+            const passIn = document.getElementById('loginPass').value;
+            
+            const userSaved = localStorage.getItem('savedUser');
+            const passSaved = localStorage.getItem('savedPass');
+
+            if (userIn === userSaved && passIn === passSaved) {
+                alert('Selamat Datang di OMET!');
+                window.location.href = 'dashboard.html'; // Pindah ke halaman utama
+            } else {
+                alert('Username atau Password salah!');
+            }
+        });
+    </script>
+</body>
+</html>

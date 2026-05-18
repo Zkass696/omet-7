@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proker OMET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #f8f9fa;">
+
+    <div class="back-header">
+        <a href="dashboard.html"><i class="fas fa-arrow-left"></i></a>
+        <h2>Program Kerja</h2>
+    </div>
+
+    <div class="dashboard-body">
+        <div class="summary-card" style="border-left-color: #3498db;">
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+                <div>
+                    <h4 style="margin: 0;">Lomba Literacy Day</h4>
+                    <p>Target: Seluruh Siswa SMP</p>
+                </div>
+                <span style="font-size: 0.7rem; background: #ebf5ff; color: #3498db; padding: 4px 8px; border-radius: 5px; font-weight: bold;">MEI</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 80%;"></div>
+            </div>
+            <p style="font-size: 0.7rem; margin-top: 5px;">Persiapan: 80% (Hampir Selesai)</p>
+        </div>
+
+        <div class="summary-card" style="border-left-color: #9b59b6;">
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+                <div>
+                    <h4 style="margin: 0;">Bakhti Sosial Ramadan</h4>
+                    <p>Target: Masyarakat Sekitar</p>
+                </div>
+                <span style="font-size: 0.7rem; background: #f3ebff; color: #9b59b6; padding: 4px 8px; border-radius: 5px; font-weight: bold;">SELESAI</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 100%; background: #2ecc71;"></div>
+            </div>
+            <p style="font-size: 0.7rem; margin-top: 5px;">Status: 100% (Terlaksana)</p>
+        </div>
+    </div>
+
+    <script>
+        const user = JSON.parse(sessionStorage.getItem('userActive'));
+        if (!user) { window.location.href = 'index.html'; }
+    </script>
+</body>
+</html>

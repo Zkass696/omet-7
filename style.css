@@ -1,0 +1,502 @@
+/* ============================================================
+   1. FONDASI UTAMA
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   2. HALAMAN LOGIN (AUTH)
+   ============================================================ */
+body.auth-body {
+    background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.auth-container h2 {
+    color: #001f3f;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+/* Form Styling */
+#loginForm {
+    margin-top: 25px;
+}
+
+.input-box {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 15px;
+    border: 1.5px solid #eee;
+    border-radius: 12px;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-box:focus {
+    border-color: #ffcc00;
+    background: #fffdf5;
+}
+
+/* Password Group khusus untuk Ikon Mata */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-group .input-box {
+    padding-right: 45px; /* Beri ruang agar teks tidak tertutup ikon */
+}
+
+#togglePass {
+    position: absolute;
+    right: 15px;
+    top: 18px; /* Sesuaikan agar pas di tengah input */
+    color: #aaa;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.btn-masuk {
+    width: 100%;
+    padding: 15px;
+    background: #ffcc00;
+    color: #001f3f;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.btn-masuk:active {
+    transform: scale(0.97);
+}
+
+/* ============================================================
+   1. GLOBAL & RESET (Fondasi Utama)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Hilangkan warna biru saat klik di HP */
+}
+
+body {
+    background-color: #fcfcfc;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   2. DASHBOARD HEADER (Gaya Meteor Modern)
+   ============================================================ */
+.main-header {
+    background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+    color: white;
+    padding: 40px 20px 45px 20px; /* Padding bawah sedikit dikurangi */
+    display: flex; /* Gunakan flex kembali */
+    justify-content: space-between;
+    align-items: flex-start; /* Agar logo tetap di atas saat nama memanjang */
+    gap: 15px;
+    border-radius: 0 0 40px 40px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 31, 63, 0.2);
+    min-height: 160px; /* Memberi ruang minimal */
+}
+
+
+
+/* Efek Cahaya Berdenyut di Background Header */
+.main-header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 204, 0, 0.12) 0%, transparent 60%);
+    animation: pulseGlow 10s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+.user-info-box {
+    position: relative;
+    z-index: 2;
+}
+
+.text-welcome {
+    font-size: 0.75rem;
+    color: #ffcc00;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.text-username {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    display: block; /* Pastikan dia berbentuk blok */
+    word-wrap: break-word; /* Memotong kata jika terlalu panjang */
+    overflow: visible; /* Tampilkan semua teks */
+    white-space: normal; /* Biarkan teks turun ke baris baru */
+}
+
+
+.text-jabatan {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 6px;
+    font-style: italic;
+}
+
+/* Brand & Profile Section */
+.brand-name {
+    font-weight: 800;
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: white;
+    margin-bottom: 10px;
+}
+
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #ffcc00;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============================================================
+   3. MENU GRID (Tombol Navigasi Utama)
+   ============================================================ */
+.dashboard-body {
+    padding: 30px 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: -20px; /* Membuat menu sedikit naik menumpuk header untuk kesan kedalaman */
+}
+
+.menu-item {
+    background: white;
+    padding: 25px 15px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    border: 1px solid #f2f2f2;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menu-item:active {
+    transform: scale(0.92);
+    background: #f9f9f9;
+}
+
+.menu-item i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+/* Warna Ikon Menu */
+.color-kas { color: #2ecc71; }      /* Hijau */
+.color-proker { color: #3498db; }   /* Biru */
+.color-pelanggar { color: #e74c3c; } /* Merah */
+.color-struktur { color: #9b59b6; }  /* Ungu */
+
+.menu-item span {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* ============================================================
+   4. SUMMARY CARDS (Kartu Informasi/Update)
+   ============================================================ */
+.summary-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    border-left: 6px solid #ffcc00;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.summary-card h4 {
+    font-size: 0.95rem;
+    color: #001f3f;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-card p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* ============================================================
+   5. BOTTOM NAVIGATION (Navigasi Bawah)
+   ============================================================ */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 10px 25px 10px; /* Padding bawah ekstra untuk kenyamanan jempol */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+    z-index: 100;
+    border-top: 1px solid #eee;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #aaa;
+    font-size: 0.75rem;
+    text-align: center;
+    transition: all 0.3s;
+    flex: 1;
+}
+
+.nav-item i {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.nav-item.active {
+    color: #001f3f;
+    font-weight: 800;
+}
+
+.nav-item.active i {
+    color: #ffcc00;
+}
+
+/* ============================================================
+   6. SUB-PAGE STYLES (Untuk Kas, Pelanggar, dll)
+   ============================================================ */
+.back-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.back-header a {
+    color: #001f3f;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.back-header h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #001f3f;
+}
+
+.data-card {
+    background: white;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.data-info h5 {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.data-info p {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.badge-point {
+    background: #fff5f5;
+    color: #e74c3c;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+/* ============================================================
+   7. STYLES KHUSUS PROKER & STRUKTUR
+   ============================================================ */
+.progress-container {
+    width: 100%;
+    background: #eee;
+    border-radius: 10px;
+    height: 8px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background: #ffcc00;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.struktur-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    border: 1px solid #f0f0f0;
+}
+
+.avatar-struktur {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #001f3f;
+    padding: 3px;
+}
+
+/* ============================================================
+   8. MODAL PROFILE POP-UP
+   ============================================================ */
+.modal-profile {
+    display: none; /* Sembunyi dulu */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 31, 63, 0.8); /* Warna gelap transparan */
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    width: 85%;
+    max-width: 320px;
+    border-radius: 30px;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.7);
+    animation: popBubble 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popBubble { from { transform: scale(0.7); } to { transform: scale(1); } }
+
+.large-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ffcc00;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.btn-change-photo {
+    background: #001f3f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 1.5rem;
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* Penyesuaian agar Brand Name tidak hancur */
+.brand-name {
+    white-space: nowrap; /* Mencegah angka 7 turun ke bawah */
+    font-size: 0.75rem;
+}

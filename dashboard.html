@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard OMET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+    <div class="user-info-box">
+        <span class="text-welcome">Selamat Datang,</span>
+        <h1 class="text-username" id="displayNama">User</h1>
+        <p class="text-jabatan" id="displayJabatan">Jabatan OSIS</p>
+    </div>
+
+    <div class="header-right" style="display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0;">
+        <div class="brand-name" style="white-space: nowrap;">METEOR 7</div>
+        <div class="profile-circle" onclick="openProfileModal()" style="cursor: pointer;">
+            <img src="https://via.placeholder.com/150" id="profileImage" alt="Foto Profil">
+        </div>
+    </div>
+</header>
+
+
+    <div id="profileModal" class="modal-profile">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeProfileModal()">&times;</span>
+        <img src="https://via.placeholder.com/150" id="largeProfileImage" class="large-profile">
+        <h3 id="modalName" style="margin-bottom: 5px; color: #001f3f;">Nama User</h3>
+        <p id="modalJabatan" style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">Jabatan</p>
+        
+        <button class="btn-change-photo" onclick="document.getElementById('uploadFoto').click()">
+            <i class="fas fa-camera"></i> Ganti Foto
+        </button>
+        <input type="file" id="uploadFoto" hidden accept="image/*" onchange="changeImage(this)">
+    </div>
+</div>
+
+
+    <main class="dashboard-body">
+        
+        <div class="menu-grid" id="menuContainer">
+            </div>
+
+        <h3 style="font-size: 1.1rem; margin: 25px 0 15px 0; color: #001f3f; font-weight: 800;">
+            <i class="fas fa-bolt" style="color: #ffcc00; margin-right: 5px;"></i> Update Terkini
+        </h3>
+        
+        <div class="summary-card">
+            <h4>📢 Agenda Terdekat</h4>
+            <p>Rapat Mingguan Sekbid 1 - Jumat, 15:00 WIB di Ruang OSIS.</p>
+        </div>
+
+        <div class="summary-card" id="cardKas">
+            <h4>💰 Saldo Kas OMET</h4>
+            <p>Total saat ini: <b style="color: #2ecc71;">Rp 150.000</b><br><small>Update terakhir: 2 jam yang lalu</small></p>
+        </div>
+        
+        <div style="height: 100px;"></div>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="dashboard.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="testimoni.html" class="nav-item">
+            <i class="fas fa-comment-dots"></i>
+            <span>Testimoni</span>
+        </a>
+    </nav>
+
+    <script>
+       // 1. Ambil data user dari Session Storage
+const user = JSON.parse(sessionStorage.getItem('userActive'));
+
+// Cek Keamanan
+if (!user) {
+    window.location.href = 'index.html';
+}
+
+// 2. Tampilkan data user ke UI
+document.getElementById('displayNama').innerText = user.nama;
+document.getElementById('displayJabatan').innerText = user.jabatan;
+
+// 3. Logika Foto Profil (Ambil dari memori)
+const fotoSaved = localStorage.getItem(`foto_${user.nama}`);
+if(fotoSaved) {
+    document.getElementById('profileImage').src = fotoSaved;
+}
+
+// 4. Logika Modal Pop-up
+const modal = document.getElementById('profileModal');
+
+function openProfileModal() {
+    // Sinkronkan gambar modal dengan gambar profil saat ini
+    document.getElementById('largeProfileImage').src = document.getElementById('profileImage').src;
+    document.getElementById('modalName').innerText = user.nama;
+    document.getElementById('modalJabatan').innerText = user.jabatan;
+    modal.style.display = 'flex';
+}
+
+function closeProfileModal() {
+    modal.style.display = 'none';
+}
+
+// Tutup jika klik di luar box
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeProfileModal();
+    }
+}
+
+// 5. Fungsi Ganti Foto (Hanya satu fungsi, tidak double)
+function changeImage(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const base64Image = e.target.result;
+            // Update semua tampilan foto
+            document.getElementById('profileImage').src = base64Image;
+            document.getElementById('largeProfileImage').src = base64Image;
+            // Simpan ke memori permanen
+            localStorage.setItem(`foto_${user.nama}`, base64Image);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// 6. Logika Menu Dinamis
+const menuContainer = document.getElementById('menuContainer');
+let htmlMenu = `
+    <a href="proker.html" class="menu-item">
+        <i class="fas fa-calendar-check color-proker"></i>
+        <span>Proker</span>
+    </a>
+    <a href="struktur.html" class="menu-item">
+        <i class="fas fa-sitemap color-struktur"></i>
+        <span>Struktur</span>
+    </a>
+`;
+
+if (user.level === "admin") {
+    htmlMenu += `
+        <a href="kas.html" class="menu-item">
+            <i class="fas fa-wallet color-kas"></i>
+            <span>Kelola Kas</span>
+        </a>
+        <a href="pelanggar.html" class="menu-item">
+            <i class="fas fa-user-shield color-pelanggar"></i>
+            <span>Pelanggar</span>
+        </a>
+    `;
+    document.getElementById('cardKas').style.display = 'block';
+} else {
+    document.getElementById('cardKas').style.display = 'none';
+}
+
+menuContainer.innerHTML = htmlMenu;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pelanggar - OMET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #f8f9fa;">
+
+    <div class="back-header">
+        <a href="dashboard.html"><i class="fas fa-arrow-left"></i></a>
+        <h2>Data Pelanggaran</h2>
+    </div>
+
+    <div class="dashboard-body">
+        <input type="text" placeholder="Cari nama siswa..." 
+               style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px; outline: none;">
+
+        <div id="listPelanggar">
+            <div class="data-card">
+                <div class="data-info">
+                    <h5>Rizky Ramadhan</h5>
+                    <p>Atribut tidak lengkap (Dasi) • 4 Mei 2026</p>
+                </div>
+                <div class="badge-point">10 Pts</div>
+            </div>
+
+            <div class="data-card">
+                <div class="data-info">
+                    <h5>Siti Aminah</h5>
+                    <p>Terlambat masuk sekolah • 3 Mei 2026</p>
+                </div>
+                <div class="badge-point">5 Pts</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cek keamanan login
+        const user = JSON.parse(sessionStorage.getItem('userActive'));
+        if (!user) { window.location.href = 'index.html'; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMET - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        <h2>METEOR 7</h2>
+        <p style="color: #666; margin-bottom: 20px;">Silakan login pengurus</p>
+        
+        <form id="loginForm">
+            <input type="text" id="user" placeholder="Username" required 
+                   style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ddd; outline: none;">
+            
+            <div class="input-group" style="position: relative; width: 100%; margin-bottom: 25px;">
+                <input type="password" id="pass" placeholder="Password" required 
+                       style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; outline: none;">
+                <i class="fas fa-eye" id="togglePass" 
+                   style="position: absolute; right: 15px; top: 14px; cursor: pointer; color: #888;"></i>
+            </div>
+                   
+            <button type="submit" id="btnMasuk" style="width: 100%; padding: 14px; background: #ffcc00; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: #001f3f;">MASUK</button>
+        </form>
+    </div>
+
+    <script src="database.js"></script>
+
+    <script>
+        // 1. Logika Toggle Lihat Password
+        const passInput = document.getElementById('pass');
+        const toggleBtn = document.getElementById('togglePass');
+
+        toggleBtn.addEventListener('click', function() {
+            const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passInput.setAttribute('type', type);
+            // Ganti ikon
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // 2. Logika Form Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userIn = document.getElementById('user').value;
+            const passIn = document.getElementById('pass').value;
+
+            // Cek apakah database.js terbaca
+            if (typeof OMET_DB !== 'undefined') {
+                const userData = OMET_DB[userIn];
+
+                if (userData && userData.pass === passIn) {
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    sessionStorage.setItem('userActive', JSON.stringify(userData));
+                    
+                    alert(`Selamat Datang, ${userData.nama}!`);
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Username atau Password salah!');
+                }
+            } else {
+                alert('Database belum siap atau file database.js hilang!');
+            }
+        });
+    </script>
+</body>
+</html>
